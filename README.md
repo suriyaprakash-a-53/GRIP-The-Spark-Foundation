@@ -108,16 +108,18 @@ There is no null values so,Data cleaning is not Required.
 
 
 # Visualize our data's
-# Scatterplot
-# sns.set_style('darkgrid')
 
+# Scatterplot
+sns.set_style('darkgrid')
 plt.scatter(x= data['Hours'],y= data['Scores'])
 plt.title('Hours vs percentage')
 plt.xlabel('Hours Studied')
 plt.ylabel('Percentage scored')
 plt.show()
 print(data.corr())
-     
+
+     ![image](https://github.com/user-attachments/assets/85230a5f-f51c-4d95-a83b-a83afdfa94a7)
+
 
            Hours    Scores
 Hours   1.000000  0.976191
@@ -133,14 +135,16 @@ plt.ylabel('Percentage scored')
 plt.show()
 print(data.corr())
      
+![image](https://github.com/user-attachments/assets/14a2a311-926d-42cd-9b06-eef5ddf64dfe)
+
 
            Hours    Scores
 Hours   1.000000  0.976191
 Scores  0.976191  1.000000
 The variables are positively correlated.
 
-Training Model
-Split the Given data
+# Training Model
+1)Split the Given data
 
 # Defining x and y from the Data
 x = data.iloc[:,:-1].values
@@ -149,7 +153,7 @@ y = data.iloc[:,1].values
 # spliting the Data in 2(train and test)
 train_x,test_x,train_y,test_y = train_test_split(x,y,random_state=0)
      
-** " Fitting the Data into model " **
+2)Fitting the Data into model
 
 # Using Linear Regression
 
@@ -188,7 +192,8 @@ Original Scores	Predicted Scores
 4	62	60.588106
 5	35	39.710582
 6	24	20.821393
-Visual Comparision between Original and Predicted Scores
+
+# Visual Comparision between Original and Predicted Scores
 
 # Scatterplot
 plt.scatter(x= test_x,y= test_y)
@@ -199,6 +204,8 @@ plt.ylabel('Percentage scored')
 plt.show()
 print(data.corr())
      
+![image](https://github.com/user-attachments/assets/edbe4b4c-3418-48df-8b3e-81667e433ec0)
+
 
            Hours    Scores
 Hours   1.000000  0.976191
@@ -206,17 +213,20 @@ Scores  0.976191  1.000000
 Evaluating the Model
 
 # accuracy calculating of model
+
 print('mean absolute error:',mean_absolute_error(test_y,pred_y))
      
 mean absolute error: 4.130879918502482
-Predicted score of 9.25 hours
+
+# Predicted score of 9.25 hours
 
 hours =[9.25]
 sol = regression.predict([hours])
 print('scores={}',format(round(sol[0],3)))
      
 scores={} 93.893
-Training Scores vs Tested Scores
+
+# Training Scores vs Tested Scores
 
 print("Train : ",regression.score(train_x,train_y)*100)
 print("Test : ",regression.score(test_x,test_y)*100)
